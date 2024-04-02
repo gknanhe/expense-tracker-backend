@@ -5,16 +5,17 @@ import {
   getExpense,
 } from "../controllers/expenses.js";
 import { addIncome, deleteIncome, getIncomes } from "../controllers/incomes.js";
+import protectRoute from "../middleware/protectRoute.js";
 
 const router = express.Router();
 //income routes
-router.post("/add-income", addIncome);
-router.get("/get-income", getIncomes);
-router.get("/delete-income", deleteIncome);
+router.post("/add-income", protectRoute, addIncome);
+router.get("/get-income", protectRoute, getIncomes);
+router.get("/delete-income", protectRoute, deleteIncome);
 
 //expense routes
-router.post("/add-expense", addExpense);
-router.get("/get-expense", getExpense);
-router.get("/delete-expense", deleteExpense);
+router.post("/add-expense", protectRoute, addExpense);
+router.get("/get-expense", protectRoute, getExpense);
+router.get("/delete-expense", protectRoute, deleteExpense);
 
 export default router;

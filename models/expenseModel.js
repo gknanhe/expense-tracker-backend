@@ -18,7 +18,7 @@ const ExpenseSchema = new mongoose.Schema(
 
     type: {
       type: String,
-      default: "income",
+      default: "expense",
     },
     date: {
       type: Date,
@@ -36,6 +36,7 @@ const ExpenseSchema = new mongoose.Schema(
       trim: true,
       maxLength: 100,
     },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // Reference to the User model
   },
   { timestamps: true }
 );
